@@ -1,0 +1,124 @@
+================================================================================
+                    HANDORRA - HOW TO RUN THE PROJECT
+================================================================================
+
+STEP 1: INSTALL DEPENDENCIES
+-----------------------------
+Open your terminal in the Handorra-2.0-main folder and run:
+
+    npm install
+
+This will install all required packages (React, TypeScript, Tailwind, etc.)
+
+
+STEP 2: CONFIGURE ENVIRONMENT
+------------------------------
+The .env file is already set up with Supabase credentials.
+
+If you need to use your own Supabase project:
+1. Go to https://supabase.com
+2. Create a new project
+3. Get your credentials from Settings > API
+4. Update the .env file with your values
+
+
+STEP 3: RUN THE APPLICATION
+----------------------------
+Start the development server:
+
+    npm run dev
+
+The app will start on: http://localhost:8080
+
+
+STEP 4: OPEN IN BROWSER
+------------------------
+Navigate to:
+
+    http://localhost:8080
+
+You should see the Handorra homepage!
+
+
+================================================================================
+                            AVAILABLE COMMANDS
+================================================================================
+
+npm run dev         - Start development server (port 8080)
+npm run build       - Build for production
+npm run preview     - Preview production build
+npm run lint        - Check code quality
+
+
+================================================================================
+                              TROUBLESHOOTING
+================================================================================
+
+Problem: Port 8080 already in use
+Solution: Edit vite.config.ts and change the port number
+
+Problem: Cannot connect to Supabase
+Solution: Check your .env file has correct credentials
+
+Problem: Module errors
+Solution: Delete node_modules and package-lock.json, then run npm install
+
+
+================================================================================
+                            PROJECT STRUCTURE
+================================================================================
+
+src/
+├── components/      - Reusable UI components
+├── pages/          - Page components (routes)
+├── hooks/          - Custom React hooks
+├── lib/            - Utility functions
+└── integrations/   - Supabase integration
+
+public/             - Static assets (images, icons)
+supabase/           - Database migrations
+
+
+================================================================================
+                              DOCUMENTATION
+================================================================================
+
+For more detailed information, see:
+
+- README.md          - Project overview and features
+- SETUP_GUIDE.md     - Comprehensive setup instructions
+- QUICK_START.md     - Quick 5-minute guide
+- HOW_TO_RUN.md      - Detailed run instructions
+- CHANGES_SUMMARY.md - Summary of code cleanup changes
+
+
+================================================================================
+                                FEATURES
+================================================================================
+
+✓ Browse products by category
+✓ Shopping cart with real-time updates
+✓ User authentication
+✓ Order management
+✓ Artisan/seller profiles
+✓ Secure checkout
+✓ Fully responsive design
+
+
+================================================================================
+                              TECH STACK
+================================================================================
+
+Frontend:  React 18 + TypeScript
+Styling:   Tailwind CSS + shadcn-ui
+Build:     Vite
+Backend:   Supabase
+State:     TanStack Query
+Routing:   React Router v6
+
+
+================================================================================
+
+                        Happy Coding! 🚀
+
+================================================================================
