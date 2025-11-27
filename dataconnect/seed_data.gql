@@ -1,0 +1,58 @@
+mutation CreateSeedData @transaction @auth(level: PUBLIC, insecureReason: "This operation is used to seed the database with example data.") {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "demouser1",
+      email: "demouser1@example.com",
+      passwordHash: "somehash1",
+      createdAt: "2024-01-01T00:00:00Z",
+      isArtist: false
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "demouser2",
+      email: "demouser2@example.com",
+      passwordHash: "somehash2",
+      createdAt: "2024-01-02T00:00:00Z",
+      isArtist: true
+    }
+  ])
+  artistProfile_insertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440002",
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      artistName: "demoartist1",
+      description: "Example artist profile",
+    }
+  ])
+  artwork_insertMany(data: [
+    {
+      id: "750e8400-e29b-41d4-a716-446655440003",
+      artistProfileId: "650e8400-e29b-41d4-a716-446655440002",
+      title: "Example Artwork",
+      description: "Example artwork description",
+      imageUrl: "http://example.com/image.jpg",
+      price: 100.00,
+      quantityAvailable: 10,
+      createdAt: "2024-01-03T00:00:00Z"
+    }
+  ])
+  order_insertMany(data: [
+    {
+      id: "850e8400-e29b-41d4-a716-446655440004",
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      orderDate: "2024-01-04T00:00:00Z",
+      shippingAddress: "123 Example St",
+      status: "pending",
+      totalAmount: 100.00
+    }
+  ])
+  orderItem_insertMany(data: [
+    {
+      orderId: "850e8400-e29b-41d4-a716-446655440004",
+      artworkId: "750e8400-e29b-41d4-a716-446655440003",
+      priceAtTimeOfPurchase: 100.00,
+      quantity: 1
+    }
+  ])
+}

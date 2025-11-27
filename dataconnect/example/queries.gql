@@ -1,0 +1,29 @@
+mutation CreateNewUser($displayName: String!, $email: String!, $passwordHash: String!) @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  user_insert(data: {displayName: $displayName, email: $email, passwordHash: $passwordHash, createdAt_expr: "request.time"})
+}
+
+query GetArtworkById($artworkId: UUID!) @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  artwork(id: $artworkId) {
+    id
+    title
+    imageUrl
+    price
+    artistProfile {
+      id
+      artistName
+    }
+  }
+}
+
+mutation UpdateArtworkQuantity($artworkId: UUID!, $quantityAvailable: Int!) @auth(level: USER) {
+  artwork_update(id: $artworkId, data: {quantityAvailable: $quantityAvailable})
+}
+
+query ListArtworksByCategory($category: String!) @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  artworks(where: {category: {eq: $category}}) {
+    id
+    title
+    imageUrl
+    price
+  }
+}

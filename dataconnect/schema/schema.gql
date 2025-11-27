@@ -1,0 +1,47 @@
+type User @table {
+  email: String!
+  passwordHash: String!
+  displayName: String!
+  createdAt: Timestamp!
+  isArtist: Boolean
+  bio: String
+  profilePictureUrl: String
+}
+
+type ArtistProfile @table {
+  user: User!
+  artistName: String!
+  description: String!
+  websiteUrl: String
+  socialMediaLink1: String
+  socialMediaLink2: String
+}
+
+type Artwork @table {
+  artistProfile: ArtistProfile!
+  title: String!
+  description: String!
+  price: Float!
+  quantityAvailable: Int!
+  createdAt: Timestamp!
+  imageUrl: String!
+  category: String
+  materials: String
+  dimensions: String
+}
+
+type Order @table {
+  user: User!
+  orderDate: Timestamp!
+  totalAmount: Float!
+  shippingAddress: String!
+  status: String!
+  trackingNumber: String
+}
+
+type OrderItem @table(key: ["order", "artwork"]) {
+  order: Order!
+  artwork: Artwork!
+  quantity: Int!
+  priceAtTimeOfPurchase: Float!
+}
